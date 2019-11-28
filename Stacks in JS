@@ -1,0 +1,39 @@
+var Stack = function() { //creeates the stack
+  this.count = 0; //keep track of items in the stack
+  this.storage = {};
+
+  //this will add a value to the end of the stack(top)
+  this.push = function(value) {
+    this.storage[this.count] = value; //puts value at top of stack
+    this.count++;
+  }
+
+  //this will remove and return the value on top of the stack
+  this.pop = function () {
+    if (this.count === 0) {
+      return undefined; //means there is nothing in the stack
+    }
+
+    this.count--;
+    let result = this.storage[this.count]; //last item in the stack
+    delete this.storage[this.count];
+    return result; //gives you the last item on the top 
+  }
+
+  this.size = function() {
+    return this.count;
+  }
+
+  this.peek = function() {
+    return this.storage[this.count-1];
+  }
+}
+
+var myStack = new Stack(); //creates an object
+myStack.push(1);//first item, bottom of stack
+myStack.push(2);//2 is on top of 1
+myStack.push("Hello!") //Hello is on top of 2, which is on top of 1
+//console.log(myStack.peek()) //returns whatever is on top of stack
+//console.log(myStack.pop()) //gets rid of top element of stack
+console.log(myStack.peek())
+
